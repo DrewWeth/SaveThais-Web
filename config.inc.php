@@ -1,4 +1,4 @@
-<?php 
+<?php
 ##################################################
 #                 CONFIGURATION                  #
 ##################################################
@@ -11,15 +11,15 @@
 ##################################################
 
 # Set data directory of your OT server
-$cfg['dirdata'] = 'C:/OTServ/data/';
+$cfg['dirdata'] = '\Home\Desktop\SaveThais7.6\TFS7.6\data';
 
 $cfg['house_file'] = 'world/Tibia-house.xml';
 
 # MySQL server settings
 $cfg['SQL_Server'] = 'localhost';
-$cfg['SQL_User'] = 'root';
-$cfg['SQL_Password'] = 'pass';
-$cfg['SQL_Database'] = 'otserv2';
+$cfg['SQL_User'] = 'agwrnd';
+$cfg['SQL_Password'] = '96875252Abc';
+$cfg['SQL_Database'] = 'tfscrying';
 
 # Must correspond to your OTServ configuration
 # Options: plain, md5, sha1
@@ -73,9 +73,9 @@ $cfg['ranks_access'] = 2;
 $cfg['start_page'] = 'news.php';
 
 # Name shown in window title
-$cfg['server_name'] = 'Nicaw SQL';
+$cfg['server_name'] = 'Honera.io';
 
-# Server ip and port for getting status. 
+# Server ip and port for getting status.
 # In most cases localhost should be used
 $cfg['server_ip'] = '127.0.0.1';
 $cfg['server_port'] = 7171;
@@ -122,7 +122,7 @@ $cfg['invalid_names'] = array('^gm','^god','admin','fuck','gamemaster', 'owner')
 
 # Accounts that are allowed to access admin panel
 # Example: array('account1', 'account2');
-$cfg['admin_accounts'] = array();
+$cfg['admin_accounts'] = array('96875252');
 
 # Listed IPs always allowed to access admin panel, no matter if it has account or not
 $cfg['admin_ip'] = array('127.0.0.1');
@@ -159,32 +159,28 @@ NOTICE
 Town IDs must be correct and match those in your map
 */
 # Town names
-$cfg['temple'][1]['name'] = 'Devland';
-$cfg['temple'][2]['name'] = 'Forgotten';
-$cfg['temple'][3]['name'] = 'Evolutions';
-$cfg['temple'][4]['name'] = 'Thais';
-$cfg['temple'][5]['name'] = 'Ab\'Dendriel';
-$cfg['temple'][6]['name'] = 'Kazordoon';
-$cfg['temple'][7]['name'] = 'Something else?';
-$cfg['temple'][8]['name'] = 'Darashia';
-$cfg['temple'][9]['name'] = 'Port Hope';
-$cfg['temple'][10]['name'] = 'Liberty Bay';
+$cfg['temple'][3]['name'] = 'Thais';
+$cfg['temple'][5]['name'] = 'Carlin';
+$cfg['temple'][4]['name'] = 'Venore';
+
 
 # Now set which town(s) you want to use in character making
-$cfg['temple'][1]['x'] = 410;
-$cfg['temple'][1]['y'] = 573;
-$cfg['temple'][1]['z'] = 7;
-$cfg['temple'][1]['enabled'] = true;
-
-$cfg['temple'][2]['x'] = 50;
-$cfg['temple'][2]['y'] = 50;
-$cfg['temple'][2]['z'] = 7;
-$cfg['temple'][2]['enabled'] = false;
 
 $cfg['temple'][3]['x'] = 1000;
 $cfg['temple'][3]['y'] = 1000;
 $cfg['temple'][3]['z'] = 7;
 $cfg['temple'][3]['enabled'] = true;
+
+$cfg['temple'][4]['x'] = 1000;
+$cfg['temple'][4]['y'] = 1000;
+$cfg['temple'][4]['z'] = 7;
+$cfg['temple'][4]['enabled'] = true;
+
+$cfg['temple'][5]['x'] = 1000;
+$cfg['temple'][5]['y'] = 1000;
+$cfg['temple'][5]['z'] = 7;
+$cfg['temple'][5]['enabled'] = true;
+
 
 ##################################################
 #                 Vocation Config                #
@@ -218,11 +214,6 @@ $cfg['vocations'][$id]['skills'][4] = 1;
 $cfg['vocations'][$id]['skills'][5] = 1;
 $cfg['vocations'][$id]['skills'][6] = 1;
 
-$cfg['vocations'][$id]['equipment'][3] = 3939;
-$cfg['vocations'][$id]['equipment'][4] = 2650;
-$cfg['vocations'][$id]['equipment'][5] = 2382;
-$cfg['vocations'][$id]['equipment'][10] = 2050;
-
 ################# Sorcerer #######################
 $id = 1;
 $cfg['vocations'][$id]['name'] = 'Sorcerer';
@@ -245,13 +236,6 @@ $cfg['vocations'][$id]['skills'][4] = 10;
 $cfg['vocations'][$id]['skills'][5] = 10;
 $cfg['vocations'][$id]['skills'][6] = 10;
 
-$cfg['vocations'][$id]['equipment'][1] = 2480;
-$cfg['vocations'][$id]['equipment'][2] = 2172;
-$cfg['vocations'][$id]['equipment'][3] = 2000;
-$cfg['vocations'][$id]['equipment'][4] = 2464;
-$cfg['vocations'][$id]['equipment'][6] = 2530;
-$cfg['vocations'][$id]['equipment'][7] = 2468;
-$cfg['vocations'][$id]['equipment'][8] = 2643;
 
 ################# Druid ##########################
 $id = 2;
@@ -275,14 +259,6 @@ $cfg['vocations'][$id]['skills'][4] = 10;
 $cfg['vocations'][$id]['skills'][5] = 10;
 $cfg['vocations'][$id]['skills'][6] = 10;
 
-$cfg['vocations'][$id]['equipment'][1] = 2480;
-$cfg['vocations'][$id]['equipment'][2] = 2172;
-$cfg['vocations'][$id]['equipment'][3] = 2000;
-$cfg['vocations'][$id]['equipment'][4] = 2464;
-$cfg['vocations'][$id]['equipment'][6] = 2530;
-$cfg['vocations'][$id]['equipment'][7] = 2468;
-$cfg['vocations'][$id]['equipment'][8] = 2643;
-
 ################# Paladin #######################
 $id = 3;
 $cfg['vocations'][$id]['name'] = 'Paladin';
@@ -305,14 +281,6 @@ $cfg['vocations'][$id]['skills'][4] = 10;
 $cfg['vocations'][$id]['skills'][5] = 10;
 $cfg['vocations'][$id]['skills'][6] = 10;
 
-$cfg['vocations'][$id]['equipment'][1] = 2480;
-$cfg['vocations'][$id]['equipment'][2] = 2172;
-$cfg['vocations'][$id]['equipment'][3] = 2000;
-$cfg['vocations'][$id]['equipment'][4] = 2464;
-$cfg['vocations'][$id]['equipment'][6] = 2530;
-$cfg['vocations'][$id]['equipment'][7] = 2468;
-$cfg['vocations'][$id]['equipment'][8] = 2643;
-
 ################# Knight #########################
 $id = 4;
 $cfg['vocations'][$id]['name'] = 'Knight';
@@ -334,14 +302,6 @@ $cfg['vocations'][$id]['skills'][3] = 10;
 $cfg['vocations'][$id]['skills'][4] = 10;
 $cfg['vocations'][$id]['skills'][5] = 10;
 $cfg['vocations'][$id]['skills'][6] = 10;
-
-$cfg['vocations'][$id]['equipment'][1] = 2480;
-$cfg['vocations'][$id]['equipment'][2] = 2172;
-$cfg['vocations'][$id]['equipment'][3] = 2000;
-$cfg['vocations'][$id]['equipment'][4] = 2464;
-$cfg['vocations'][$id]['equipment'][6] = 2530;
-$cfg['vocations'][$id]['equipment'][7] = 2468;
-$cfg['vocations'][$id]['equipment'][8] = 2643;
 
 ################# Other IDs ######################
 
