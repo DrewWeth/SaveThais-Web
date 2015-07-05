@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
     Copyright (C) 2007 - 2009  Nicaw
 
@@ -50,6 +50,7 @@ include ("header.inc.php");
 <div id="content">
 <div class="top">Server News</div>
 <div class="mid">
+<a href="news.php?RSS2" style="text-decoration: none; float: right;"><img src="resource/feed.png" title="Subscribe to RSS" alt="rss" style="vertical-align: middle;"/></a>
 <?php 
 $mysql = AAC::$SQL;
 if (isset($_GET['id']))

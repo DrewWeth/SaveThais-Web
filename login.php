@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
     Copyright (C) 2007 - 2009  Nicaw
 
@@ -99,7 +99,7 @@ include ("header.inc.php");
         <fieldset>
             <legend>More Options</legend>
             <ul class="task-menu" style="width: 200px;">
-                <li><a onclick="self.window.location.href='register.php'" style="cursor:pointer">New Account</a></li>
+                <li onclick="self.window.location.href='register.php'" style="background-image: url(resource/vcard_add.png);">New Account</li>
                 <?php if($cfg['Email_Recovery']) {?><li onclick="ajax('form','modules/account_recover.php','',true)" style="background-image: url(resource/arrow_redo.png);">Recover Account</li><?php }?>
             </ul>
         </fieldset>

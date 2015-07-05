@@ -1,63 +1,61 @@
-<?php
+<?php 
 include ("include.inc.php");
 $ptitle= "Registration - $cfg[server_name]";
 include ("header.inc.php");
 ?>
 <div id="content">
-<div class="step">Step 1</div>
-
 <div class="top">Registration</div>
 <div class="mid">
-<div class="row">
-
-
-  <div class="col s-4">
-        <div><?php
-    if ($cfg['Email_Validate']) {
-        echo 'This server requires email validation. A letter with your password will be sent to the address provided above.';
-    } else {
-        echo 'Please enter a valid email address if we need to contact you.';
-    }
-    ?></div>
-    <input id="email" placeholder="Email Address" type="text" />&nbsp;<span id="email_state"></span>
-<input id="accname" placeholder="Account Name" type="text" />&nbsp;<span id="accname_state"></span><div>
-</div>
+<table>
+<tr><td width="40%" style="vertical-align: top"><label for="email"><b>Email address:</b></label></td><td width="60%"><input id="email" type="text" />&nbsp;<span id="email_state"></span><div><?php
+if ($cfg['Email_Validate']) {
+    echo 'This server requires email validation. A letter with your password will be sent to the address provided above.';
+} else {
+    echo 'Please enter a valid email address if we need to contact you.';
+}
+?></div></td></tr>
+<tr><td width="40%" style="vertical-align: top"><label for="accname"><b>Desired Account Number:</b></label></td>
+<td width="60%"><input id="accname" type="text" />&nbsp;<span id="accname_state"></span><div>
+</div></td></tr>
 <?php
 if (!$cfg['Email_Validate']) {?>
-    <div>
+    <tr><td style="vertical-align: top"><label for="password"><b>Choose a password:</b></label>
+    </td><td><input id="password" type="password" />&nbsp;<span id="password_state"></span><div>
     Password consists of letters a-z, numbers 0-9, symbols(~!@#%&;,:\^$.|?*+()) and is at least 6 characters long.
-    </div>
-    <input id="password" placeholder="Password" type="password" />&nbsp;<span id="password_state"></span>
-
-    <input id="confirm" type="password" placeholder="Confirm Password" />&nbsp;<span id="confirm_state"></span><br/><br/>
+    </div></td></tr>
+    <tr><td style="vertical-align: top"><label for="confirm"><b>Re-enter password:</b></label>
+    </td><td><input id="confirm" type="password" />&nbsp;<span id="confirm_state"></span><br/><br/></td></tr>
 <?php } ?>
-
+<tr><td style="vertical-align: top"><label for="rlname"><b>*Your name:</b></label>
+</td><td><input id="rlname" type="text" /><br/><br/></td></tr>
+<tr><td style="vertical-align: top"><label for="location"><b>*Your location:</b></label>
+</td><td><input id="location" type="text" /><br/>* Optional fields<br/><br/></td></tr>
 <?php
 if($cfg['use_captcha']) {
-    echo '<div>Prove you are not a robot</div><input id="captcha" placeholder="captcha" type="text" style="text-transform: uppercase" />'.
+    echo '<tr><td style="vertical-align: top"><b>Verification:</b></td><td><input id="captcha" type="text" style="text-transform: uppercase" />'.
+    '<div>Type the characters you see in the picture below</div>'.
     '<img id="captcha_img" width="250px" height="40px" src="doimg.php?'.time().'" alt="Verification Image" /><br/><br/>'.
-    '';
+    '</td></tr>';
 }
 ?>
-
-<input id="rules_check" type="checkbox" onclick="onRulesCheck(this)"/>&nbsp;<label for="rules_check"><b>I agree with server rules</b></label>&nbsp;
-<div style="margin-top:20px">
-  <button id="submit_button" class="waves-effect waves-light btn-large" disabled onclick="onSubmit()">Submit</button>
+<tr><td colspan="2"><div style="overflow-y: scroll; height: 200px;">
+<?php
+echo htmlspecialchars(@file_get_contents('documents/server_rules.txt'));
+?>
 </div>
+<input id="rules_check" type="checkbox" onclick="onRulesCheck(this)"/>&nbsp;<label for="rules_check"><b>I agree with server rules</b></label>&nbsp;
+<button id="submit_button" disabled="disabled" onclick="onSubmit()">Submit</button>
 <span id="submit_load" style="color: red; font-weight: bold; text-decoration: blink;"></span>
 <div id="submit_errors" style="color: red; font-weight: bold;"></div>
 <div id="submit_success" style="color: green; font-weight: bold;"></div>
-</div>
-
-</div>
-
-
+</td></tr>
+</table>
 <script type="text/javascript">
 //<![CDATA[
 function onRulesCheck(node) {
     if (node.checked) {
         node.disabled = true;
-        $('#submit_button').prop('disabled', false);
+        $('submit_button').disabled = false;
     }
 }
 
@@ -88,7 +86,7 @@ function onSubmit() {
             $('submit_errors').innerHTML = '';
             $('submit_success').innerHTML = '';
             $('submit_load').innerHTML = '';
-
+            
             for (var i = 0; i < errors.length; i++) {
                 $('submit_errors').innerHTML += errors[i].attributes.getNamedItem('id').value + ': ' + errors[i].childNodes[0].nodeValue + '<br/>';
             }

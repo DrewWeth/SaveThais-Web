@@ -1,4 +1,4 @@
-<?php
+<?php 
 /*
     Copyright (C) 2007 - 2009  Nicaw
 
@@ -32,44 +32,43 @@ include ("header.inc.php");
 <div id="content">
 <div class="top">Account</div>
 <div class="mid">
-<div class="row">
-  <div class="col s6">
-    <h3>Pick a Task</h3>
-      <ul class="task-menu">
-        <li><a onclick="ajax('ajax','modules/character_create.php','',true)" >Create Character</a></li>
-        <li><a onclick="ajax('ajax','modules/character_delete.php','',true)" >Delete Character</a></li>
-        <?php if ($cfg['char_repair']){?>
-        <li><a onclick="ajax('ajax','modules/character_repair.php','',true)" >Repair Character</a></li>
-        <?php }?>
-        <li><a onclick="ajax('ajax','modules/account_password.php','',true)">Change Password</a></li>
-        <li><a onclick="ajax('ajax','modules/account_email.php','',true)" >Change Email</a></li>
-        <li><a onclick="ajax('ajax','modules/account_comments.php','',true)">Edit Comments</a></li>
-        <li><a onclick="ajax('ajax','modules/account_options.php','',true)" >Account Options</a></li>
-        <li><a onclick="ajax('ajax','modules/guild_create.php','',true)" >Create Guild</a></li>
-        <li><a onclick="window.location.href='login.php?logout&amp;redirect=account.php'" >Logout</a></li>
-        </ul>
-  </div>
-  <div class="col s6">
-        <?php
-        if ($account->players){
-        	echo '<h3>Your characters</h3>'."\n";
-        	echo '<ul class="task-menu">';
-        	foreach ($account->players as $player){
-        		echo '<li><a onclick="window.location.href=\'characters.php?player_id='.htmlspecialchars($player['id']).'\'">'.htmlspecialchars($player['name']).'</a></li>';
-        	}
-        	echo '</ul>';
-        }
-        if ($account->guilds){
-        	echo '<h3>Your guilds</h3>'."\n";
-        	echo '<ul class="task-menu">';
-        	foreach ($account->guilds as $guild){
-        		echo '<li><a onclick="window.location.href=\'guilds.php?guild_id='.htmlspecialchars($guild['id']).'\'">'.htmlspecialchars($guild['name']).'</a></li>';
-        	}
-        	echo '</ul>';
-        }
-        ?>
-</div>
-</div>
+<table style="width: 100%">
+<tr style="vertical-align: top"><td style="width: 200px;">
+<h3>Pick a Task</h3>
+<ul class="task-menu">
+<li onclick="ajax('ajax','modules/character_create.php','',true)" style="background-image: url(resource/user_add.png);">Create Character</li>
+<li onclick="ajax('ajax','modules/character_delete.php','',true)" style="background-image: url(resource/user_delete.png);">Delete Character</li>
+<?php if ($cfg['char_repair']){?>
+<li onclick="ajax('ajax','modules/character_repair.php','',true)" style="background-image: url(resource/user_edit.png);">Repair Character</li>
+<?php }?>
+<li onclick="ajax('ajax','modules/account_password.php','',true)" style="background-image: url(resource/key.png);">Change Password</li>
+<li onclick="ajax('ajax','modules/account_email.php','',true)" style="background-image: url(resource/email.png);">Change Email</li>
+<li onclick="ajax('ajax','modules/account_comments.php','',true)" style="background-image: url(resource/page_edit.png);">Edit Comments</li>
+<li onclick="ajax('ajax','modules/account_options.php','',true)" style="background-image: url(resource/wrench.png);">Account Options</li>
+<li onclick="ajax('ajax','modules/guild_create.php','',true)" style="background-image: url(resource/group_add.png);">Create Guild</li>
+<li onclick="window.location.href='login.php?logout&amp;redirect=account.php'" style="background-image: url(resource/resultset_previous.png);">Logout</li>
+</ul>
+</td><td style="width: 130px;">
+<?php 
+if ($account->players){
+	echo '<h3>Characters</h3>'."\n";
+	echo '<ul class="task-menu">';
+	foreach ($account->players as $player){
+		echo '<li style="background-image: url(resource/user.png);" onclick="window.location.href=\'characters.php?player_id='.htmlspecialchars($player['id']).'\'">'.htmlspecialchars($player['name']).'</li>';
+	}
+	echo '</ul>';
+}
+if ($account->guilds){
+	echo '<h3>Guilds</h3>'."\n";
+	echo '<ul class="task-menu">';
+	foreach ($account->guilds as $guild){
+		echo '<li style="background-image: url(resource/group.png);" onclick="window.location.href=\'guilds.php?guild_id='.htmlspecialchars($guild['id']).'\'">'.htmlspecialchars($guild['name']).'</li>';
+	}
+	echo '</ul>';
+}
+?>
+</td></tr>
+</table>
 <?php
 if(isset($account->attrs['premend']) && $account->attrs['premend'] > time()) {
     echo '<b>Premium status:</b> You have ';
@@ -83,6 +82,6 @@ if(isset($account->attrs['premend']) && $account->attrs['premend'] > time()) {
 </div>
 <div class="bot"></div>
 </div>
-<?php
+<?php 
 include ("footer.inc.php");
 ?>

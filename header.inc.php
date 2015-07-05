@@ -3,17 +3,10 @@
 <head>
 <meta name="Author" content="nicaw" />
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
 <title><?php echo $ptitle?></title>
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-<link rel="stylesheet" href="css/custom.css" type="text/css" />
-
-<!--Let browser know website is optimized for mobile-->
-<!-- <link rel="stylesheet" href="default.css" type="text/css" media="screen" /> -->
-<!-- <link rel="stylesheet" href="print.css" type="text/css" media="print" /> -->
-
+<link rel="stylesheet" href="default.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo $cfg['skin_url'].$cfg['skin']?>.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="print.css" type="text/css" media="print" />
 <link rel="alternate" type="application/rss+xml" title="News" href="news.php?RSS2" />
 <script type="text/javascript" src="javascript/prototype.js"></script>
 <script type="text/javascript" src="javascript/main.js"></script>
@@ -37,51 +30,46 @@ function tick()
 <?php }?>
 </head>
 <body>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-
 <div id="form"></div>
 <div id="container">
+<div id="header"><div id="server_name"><?php echo $cfg['server_name']?></div></div>
+<div id="panel">
 <div id="navigation">
-  <nav>
-  <div class="nav-wrapper">
-    <a href="/" class="brand-logo left"><?php echo $cfg['server_name']?></a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-<?php
+<?php 
 if (file_exists('navigation.xml')){
 	$XML = simplexml_load_file('navigation.xml');
 	if ($XML === false) throw new aacException('Malformed XML');
 }else{die('Unable to load navigation.xml');}
 foreach ($XML->category as $cat){
-
+	echo '<div class="top" onclick="menu_toggle(this)" style="cursor: pointer;">'.$cat['name'].'</div><ul>'."\n";
 	foreach ($cat->item as $item)
-
 		echo '<li><a href="'.$item['href'].'">'.$item.'</a></li>'."\n";
+	echo '</ul><div class="bot"></div>'."\n";
 }
 ?>
-
-</ul>
-<ul id="slide-out" class="side-nav">
-  <?php
-  if (file_exists('navigation.xml')){
-    $XML = simplexml_load_file('navigation.xml');
-    if ($XML === false) throw new aacException('Malformed XML');
-  }else{die('Unable to load navigation.xml');}
-  foreach ($XML->category as $cat){
-
-    foreach ($cat->item as $item)
-
-      echo '<li><a href="'.$item['href'].'">'.$item.'</a></li>'."\n";
-  }
-  ?>
-
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
 </div>
-</nav>
-
-</div>
-<script>
-  $(".button-collapse").sideNav();
+<div id="status">
+<div class="top">Status</div>
+<div class="mid">
+<?php
+if(!empty($_SESSION['account'])) {
+    $account = new Account();
+    $account->load($_SESSION['account']);
+    echo 'Logged in as: <b>'.$account->attrs['accno'].'</b><br/>';
+    echo '<button onclick="window.location.href=\'login.php?logout&amp;redirect=account.php\'">Logout</button><hr/>';
+}
+?>
+<div id="server_state">
+<span class="offline">Server Offline</span>
+<script type="text/javascript">
+//<![CDATA[
+    new Ajax.PeriodicalUpdater('server_state', 'status.php', {
+      method: 'get', frequency: 60, decay: 1
+    });
+//]]>
 </script>
-<div class="container">
+</div>
+</div>
+<div class="bot"></div>
+</div>
+</div>
