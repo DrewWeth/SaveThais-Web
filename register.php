@@ -38,11 +38,7 @@ if($cfg['use_captcha']) {
     '</td></tr>';
 }
 ?>
-<tr><td colspan="2"><div style="overflow-y: scroll; height: 200px;">
-<?php
-echo htmlspecialchars(@file_get_contents('documents/server_rules.txt'));
-?>
-</div>
+<tr><td colspan="2">
 <input id="rules_check" type="checkbox" onclick="onRulesCheck(this)"/>&nbsp;<label for="rules_check"><b>I agree with server rules</b></label>&nbsp;
 <button id="submit_button" disabled="disabled" onclick="onSubmit()">Submit</button>
 <span id="submit_load" style="color: red; font-weight: bold; text-decoration: blink;"></span>

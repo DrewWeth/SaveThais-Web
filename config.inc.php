@@ -73,11 +73,11 @@ $cfg['ranks_access'] = 2;
 $cfg['start_page'] = 'news.php';
 
 # Name shown in window title
-$cfg['server_name'] = 'Honera.io';
+$cfg['server_name'] = 'Tibia Classic 7.6';
 
 # Server ip and port for getting status.
 # In most cases localhost should be used
-$cfg['server_ip'] = '127.0.0.1';
+$cfg['server_ip'] = 'tibiagame.com';
 $cfg['server_port'] = 7171;
 
 # Allow teleportation to temple?
