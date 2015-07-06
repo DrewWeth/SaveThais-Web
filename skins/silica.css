@@ -108,8 +108,8 @@ a:hover{
 }
 #header {	
 	height: 123px;
-        width: 776px;
-	background: #5f8375 url(silica/header.jpg);
+    width: 776px;
+	background: #5f8375;
 }
 #server_name {
 	color: white;
