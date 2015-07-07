@@ -67,15 +67,22 @@ include ("header.inc.php");
     }
     //]]>
 </script>
+<style>
+tr > td{
+padding-top:10px;
+padding-right:10px;
+}
+.form-control{
+width:240px;
+}
+</style>
 <div id="content">
-    <div class="top">Account</div>
+    <fieldset><legend>Account</legend></fieldset>
     <div class="mid">
         <?php echo '<span style="color: red; font-weight: bold">'.$error.'</span>'; ?>
-        <fieldset>
-            <legend><b>Account Login</b></legend>
             <form id="login_form" action="login.php?redirect=<?php echo htmlspecialchars($_GET['redirect'])?>" method="post">
                 <table>
-                    <tr><td style="text-align: right"><label for="account">Account</label>&nbsp;</td>
+                    <tr><td style="col-sm-4 text-align: right"><label for="account">Account</label>&nbsp;</td>
                         <?php
                         if (isset($_POST['login_submit'])) {
                             $account = $_POST['account'];
@@ -88,22 +95,30 @@ include ("header.inc.php");
                             $password = '';
                         }
                         ?>
-                        <td><input id="account" name="account" type="text" class="textfield" maxlength="100" size="10" tabindex="101" value="<?php echo htmlspecialchars($account);?>"/></td>
+                        <td><input id="account" class="form-control" name="account" type="text" class="textfield" maxlength="100" size="10" tabindex="101" value="<?php echo htmlspecialchars($account);?>"/></td>
                         <td <?php if ($cfg['secure_session']) echo ' style="visibility: hidden"';?>>&nbsp;<input id="remember" name="remember" type="checkbox" tabindex="103" onclick="remember_toggle(this)"<?php if (!empty($_COOKIE['remember'])) echo ' checked="checked"';?>/>&nbsp;<label for="remember">Remember Me?</label></td></tr>
                     <tr><td style="text-align: right"><label for="password">Password</label>&nbsp;</td>
-                        <td><input id="password" name="password" type="password" class="textfield" maxlength="100" size="10" tabindex="102" value="<?php echo htmlspecialchars($password);?>"/></td>
-                        <td>&nbsp;<input type="submit" name="login_submit" value="Sign in" tabindex="104"/></td></tr>
+                        <td><input class="form-control" id="password" name="password" type="password" class="textfield" maxlength="100" size="10" tabindex="102" value="<?php echo htmlspecialchars($password);?>"/></td>
+                        <td>&nbsp;</td></tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" class="btn btn-primary" name="login_submit" value="Sign in" tabindex="104"/>
+							</td></td>
+						</tr>
+						<tr>
+						<td></td>
+						<td>
+						<div style="margin-top:30px;">
+							<a onclick="self.window.location.href='register.php'" style="background-image: url(resource/vcard_add.png);">New Account</a>
+							<?php if($cfg['Email_Recovery']) {?><li onclick="ajax('form','modules/account_recover.php','',true)" style="background-image: url(resource/arrow_redo.png);">Recover Account<?php }?>
+						</div>
+						</td>
+						<td></td>
+						</tr>
                 </table>
             </form>
-        </fieldset>
-        <fieldset>
-            <legend>More Options</legend>
-            <ul class="task-menu" style="width: 200px;">
-                <li onclick="self.window.location.href='register.php'" style="background-image: url(resource/vcard_add.png);">New Account</li>
-                <?php if($cfg['Email_Recovery']) {?><li onclick="ajax('form','modules/account_recover.php','',true)" style="background-image: url(resource/arrow_redo.png);">Recover Account</li><?php }?>
-            </ul>
-        </fieldset>
-        <div id="form"></div>
+			
+			<div id="form"></div>
     </div>
     <div class="bot"></div>
 </div>

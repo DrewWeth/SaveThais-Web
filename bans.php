@@ -23,7 +23,8 @@ include ("header.inc.php");
 $cfg['max_ban_time'] = 2*30*24*60*60; //2 months
 ?>
 <div id="content">
-<div class="top">Server Bans</div>
+<fieldset>
+<legend>Server Bans</legend></fieldset>
 <div class="mid">
 <?php
 $SQL = AAC::$SQL;

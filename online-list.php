@@ -21,7 +21,7 @@ $ptitle="Online Players - $cfg[server_name]";
 include ("header.inc.php");
 ?>
 <div id="content">
-    <div class="top">Online Players</div>
+    <fieldset><legend>Online Players</legend></fieldset>
     <div class="mid">
         <?php
         $SQL = AAC::$SQL;
@@ -36,7 +36,7 @@ include ("header.inc.php");
         }
 
         if ($SQL->num_rows() == 0) {
-            echo 'Nobody is online :-O';
+            echo 'No one is online.';
         } else {
 
             $i = 0;

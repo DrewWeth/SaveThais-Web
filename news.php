@@ -48,7 +48,7 @@ $ptitle= "News - $cfg[server_name]";
 include ("header.inc.php");
 ?>
 <div id="content">
-<div class="top">Server News</div>
+<fieldset><legend>Server News</legend></fieldset>
 <div class="mid">
 <a href="news.php?RSS2" style="text-decoration: none; float: right;"><img src="resource/feed.png" title="Subscribe to RSS" alt="rss" style="vertical-align: middle;"/></a>
 <?php 

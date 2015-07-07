@@ -3,11 +3,17 @@
 <head>
 <meta name="Author" content="nicaw" />
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo $ptitle?></title>
-<link rel="stylesheet" href="default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo $cfg['skin_url'].$cfg['skin']?>.css" type="text/css" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/simple-sidebar.css" rel="stylesheet">
+
+<link rel="stylesheet" href="default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="print.css" type="text/css" media="print" />
 <link rel="alternate" type="application/rss+xml" title="News" href="news.php?RSS2" />
+
+
 <script type="text/javascript" src="javascript/prototype.js"></script>
 <script type="text/javascript" src="javascript/main.js"></script>
 <link rel="shortcut icon" href="resource/favicon.ico" />
@@ -40,11 +46,15 @@ function tick()
   ga('send', 'pageview');
 
 </script>
-	
+
 <div id="form"></div>
-<div id="container">
-<div id="header"><div id="server_name"><?php echo $cfg['server_name']?></div></div>
-<div id="panel">
+
+ <div id="wrapper">
+<div id="sidebar-wrapper"> <!-- Custom -->
+	<ul class="sidebar-nav">
+	<li class="sidebar-brand">
+		<a href="/"><?php echo $cfg['server_name']?></a>
+	</li>
 <div id="navigation">
 <?php 
 if (file_exists('navigation.xml')){
@@ -52,22 +62,22 @@ if (file_exists('navigation.xml')){
 	if ($XML === false) throw new aacException('Malformed XML');
 }else{die('Unable to load navigation.xml');}
 foreach ($XML->category as $cat){
-	echo '<div class="top" onclick="menu_toggle(this)" style="cursor: pointer;">'.$cat['name'].'</div><ul>'."\n";
+	echo '<li class="top" onclick="menu_toggle(this)" style="cursor: pointer;">'.$cat['name'].'</li>'."\n";
 	foreach ($cat->item as $item)
 		echo '<li><a href="'.$item['href'].'">'.$item.'</a></li>'."\n";
-	echo '</ul><div class="bot"></div>'."\n";
 }
 ?>
 </div>
-<div id="status">
-<div class="top">Status</div>
-<div class="mid">
+<li class="top">
+Status
+</li>
+<div style="padding-left:20px">
 <?php
 if(!empty($_SESSION['account'])) {
     $account = new Account();
     $account->load($_SESSION['account']);
     echo 'Logged in as: <b>'.$account->attrs['accno'].'</b><br/>';
-    echo '<button onclick="window.location.href=\'login.php?logout&amp;redirect=account.php\'">Logout</button><hr/>';
+    echo '<a onclick="window.location.href=\'login.php?logout&amp;redirect=account.php\'">Logout</a><hr/>';
 }
 ?>
 <div id="server_state">
@@ -81,6 +91,10 @@ if(!empty($_SESSION['account'])) {
 </script>
 </div>
 </div>
-<div class="bot"></div>
 </div>
-</div>
+<div class="page-content-wrapper" style="padding-top:15px">
+<a id="menu-toggle" style="top:0;right:0;position:absolute" href="#menu-toggle">Menu</a>
+	<div class="container-fluid">
+        <div class="row">
+			<div class="col-sm-12">
+				

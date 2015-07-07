@@ -23,9 +23,8 @@ include ("header.inc.php");
 $SQL = AAC::$SQL;
 ?>
 <div id="content">
-    <div class="top">Highscores</div>
-    <div class="mid">
-        <select name="sort" onchange="self.location.href=this.value">
+    <h4>Highscores
+	<select  class="form-control pull-right" style="width:140px" name="sort" onchange="self.location.href=this.value">
             <?php
             if (empty($_GET['sort'])) $_GET['sort'] = 'census';
 
@@ -66,7 +65,7 @@ $SQL = AAC::$SQL;
                 }
                 $gender_names = array(0 => 'Female',1 => 'Male');
                 echo '<p><h2>Gender</h2>';
-                echo '<table style="font-weight: bold">';
+                echo '<table class="table" style="font-weight: bold">';
                 foreach (array_keys($genders) as $gender)
                     echo '<tr><td>'.$gender_names[$gender].'</td><td>'.percent_bar($genders[$gender],$total).'</td><td>('.$genders[$gender].')</td></tr>';
                 echo '</table></p>';
@@ -77,7 +76,7 @@ $SQL = AAC::$SQL;
                     $total += $a['number'];
                 }
                 echo '<p><h2>Vocations</h2>';
-                echo '<table style="font-weight: bold">';
+                echo '<table class="table" style="font-weight: bold">';
                 foreach (array_keys($vocations) as $vocation)
                     echo '<tr><td>'.$cfg['vocations'][$vocation]['name'].'</td><td>'.percent_bar($vocations[$vocation],$total).'</td><td>('.$vocations[$vocation].')</td></tr>';
                 echo '</table></p>';
@@ -86,10 +85,17 @@ $SQL = AAC::$SQL;
 
             if (isset($query)) {
                 ?>
-            <input type="button" value="&lt;&lt;" onclick="self.window.location.href='ranks.php?sort=<?php echo urlencode($_GET['sort'])?>&amp;page=<?php echo $p-1?>'"/>
-            <b>Statistics page: <?php echo $p+1?></b>
-            <input type="button" value="&gt;&gt;" onclick="self.window.location.href='ranks.php?sort=<?php echo urlencode($_GET['sort'])?>&amp;page=<?php echo $p+1?>'"/>
-            <table>
+	
+	
+	</h4>
+    <div class="mid" style="margin-top:30px">
+
+		
+		
+				
+			
+				
+            <table class="table table-striped">
                 <tr class="color0"><td style="width:30px">#</td><td style="width:150px"><b>Name</b></td><td style="width:60px"><b><?php echo htmlspecialchars(ucfirst($_GET['sort']))?></b></td></tr>
                     <?php
                     $SQL->myQuery($query);
@@ -104,6 +110,13 @@ $SQL = AAC::$SQL;
                 }
                 ?>
             </table>
+					<nav>
+				  <ul class="pager">
+					<li><a type="button" value="&lt;&lt;" onclick="self.window.location.href='ranks.php?sort=<?php echo urlencode($_GET['sort'])?>&amp;page=<?php echo $p-1?>'">Prev</a></li>
+					<li><?php echo $p+1?></li>
+					<li><a type="button" value="&gt;&gt;" onclick="self.window.location.href='ranks.php?sort=<?php echo urlencode($_GET['sort'])?>&amp;page=<?php echo $p+1?>'">Next</a></li>
+				  </ul>
+				</nav>
     </div>
     <div class="bot"></div>
 </div>

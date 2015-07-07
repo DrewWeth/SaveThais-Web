@@ -23,12 +23,16 @@ $SQL = AAC::$SQL;
 ?>
 <div id="content">
     <script type="text/javascript" src="javascript/guild.js"></script>
-    <div class="top">Guilds</div>
-    <div class="mid">
-        <form method="get" action="guilds.php">
-            <input type="text" name="guild_name"/>
-            <input type="submit" value="Search"/>
+    <h4>Guilds
+	
+	<form class="form-inline pull-right" method="get" action="guilds.php">
+            <input type="text" class="form-control" name="guild_name"/>
+            <input type="submit" class="btn" value="Search"/>
         </form>
+	
+	</h4>
+    <div class="mid" style="margin-top:20px">
+        
         <hr style="margin-top: 5px; margin-bottom: 5px; "/>
         <?php
         //-----------------------Guild list
@@ -42,13 +46,14 @@ $SQL = AAC::$SQL;
                 else
                     $img_path = 'resource/guild_default.gif';
                 ?>
-        <table border="1" onclick="window.location.href='guilds.php?guild_id=<?php echo urlencode($a['id'])?>'" style="cursor: pointer; width: 100%;">
-            <tr><td style="width: 64px; height: 64px; padding: 10px;"><img src="<?php echo $img_path?>" alt="NO IMG" height="64" width="64"/></td>
+        <ul class="list-group" onclick="window.location.href='guilds.php?guild_id=<?php echo urlencode($a['id'])?>'" style="cursor: pointer; width: 100%;">
+            <li class="list-group-item"><img src="<?php echo $img_path?>" alt="NO IMG" height="64" width="64"/></td>
                 <td style="vertical-align: top;">
                     <b><?php echo htmlspecialchars($a['name'])?></b><hr/>
                             <?php echo htmlspecialchars($a['description'])?>
-                </td></tr>
-        </table>
+                </td>
+			</li>
+        </ul>
 
             <?php }
         } else {
@@ -143,11 +148,11 @@ $SQL = AAC::$SQL;
             <li style="background-image: url(resource/cross.png);" onclick="if(confirm('Are you sure?')){ajax('form','modules/guild_disband.php','guild_id=<?php echo $guild->attrs['id']?>',true);}">Disband guild</li>
                     <?php }//is owner
                     if (!isset($account)) {?>
-            <li style="background-image: url(resource/resultset_next.png);" onclick="self.window.location.href='login.php?redirect=guilds.php'">Login</li>
+            <li><a onclick="self.window.location.href='login.php?redirect=guilds.php'">Login</a></li>
                     <?php } ?>
         </ul><hr/>
         <h2 style="display: inline">Guild Members</h2>
-        <table style="width: 100%">
+        <table class="table">
                     <?php
                     echo '<tr class="color0">';
                     echo '<td style="width: 130px"><b>Rank</b></td>';
@@ -201,9 +206,8 @@ $SQL = AAC::$SQL;
                         echo '<tr><td colspan="4"><input type="text" id="new_rank_name" value="rank name" style="font-style: italic" onclick="input_clear(this)"/>&nbsp;<img style="cursor: pointer" src="resource/add.png" alt="+" id="rank_button" onclick="Guild.requestAddRank('.$guild->attrs['id'].', $(\'new_rank_name\').value)" /></td></tr>';
                     }
 
-                    echo '</table><h2 style="display: inline">Invited Players</h2>';
-                    echo '<table id="table_invited" style="width: 100%">';
-                    echo '<tr class="color0"><td colspan="2"><b>Name</b></td></tr>';
+                    echo '</table><h2 style="display: inline"><small>Invited Players</small></h2>';
+                    echo '<table id="table_invited">';
 
                     $i = 0;
                     foreach ($guild->invited as $a) {
@@ -216,9 +220,20 @@ $SQL = AAC::$SQL;
                         }
                         echo '</td></tr>';
                     }
+					
+					if ($guild->invited.count == 0){
+
+						echo '<br>No pending invitations.';
+					}
+					
+					
+					
+					
+					
                     if(isset($account) && $guild->canInvite($account->attrs['accno'])) {
                         echo '<tr><td colspan="2"><input type="text" id="invite_name" value="player name" style="font-style: italic" onclick="input_clear(this)"/>&nbsp;<img style="cursor: pointer" src="resource/add.png" alt="+" id="invite_button" onclick="Guild.requestInvite($(\'invite_name\').value, '.$guild->attrs['id'].')" /></td></tr>';
                     }
+					
                     echo '</table>';
 
                 } catch(GuildNotFoundException $e) {

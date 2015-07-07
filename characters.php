@@ -21,12 +21,14 @@ $ptitle="Characters - $cfg[server_name]";
 include("header.inc.php");
 ?>
 <div id="content">
-    <div class="top">Character Lookup</div>
-    <div class="mid">
-        <form method="get" action="characters.php">
-            <input type="text" name="player_name"/>
-            <input type="submit" value="Search"/>
+    <h4>Character Lookup
+	<form class="form-inline pull-right" method="get" action="characters.php">
+            <input type="text" class="form-control" name="player_name"/>
+            <input type="submit" class="btn" value="Search"/>
         </form>
+		</h4>
+    <div class="mid">
+        
         <?php
         try {
             $player = new Player();
@@ -83,9 +85,9 @@ include("header.inc.php");
             if ($account->attrs['reveal_characters'] && $account->players && count($account->players) > 1) {
                 echo '<b>Characters on the same account</b><br/><ul class="task-menu">';
                 foreach ($account->players as $_player) {
-                    echo '<li style="background-image: url(resource/user.png);" onclick="window.location.href=\'characters.php?player_id='.htmlspecialchars($_player['id']).'\'">'.htmlspecialchars($_player['name']).'</li>';
+                    echo '<li><a onclick="window.location.href=\'characters.php?player_id='.htmlspecialchars($_player['id']).'\'">'.htmlspecialchars($_player['name']).'</a></li>';
                 }
-                echo '</ul><hr/>';
+                echo '</ul>';
             }
 
             if ($cfg['show_deathlist']) {

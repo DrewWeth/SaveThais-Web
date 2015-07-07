@@ -42,7 +42,7 @@ $cfg['password_salt'] = '';
  * Need more? Look http://otfans.net/ and
  * http://sourceforge.net/projects/nicaw-acc/files/
  */
-$cfg['skin'] = 'silica';
+$cfg['skin'] = 'tibiagame';
 
 # In case you want to upload skins somewhere else
 $cfg['skin_url'] = 'skins/';
