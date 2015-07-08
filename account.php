@@ -30,25 +30,33 @@ $ptitle="Account - $cfg[server_name]";
 include ("header.inc.php");
 ?>
 <div id="content">
-<div class="top">Account</div>
+<fieldset><legend>Account</legend></fieldset>
 <div class="mid">
-<table style="width: 100%">
-<tr style="vertical-align: top"><td style="width: 200px;">
-<h3>Pick a Task</h3>
+<div class="row">
+<div class="col-sm-4">
+<h3>Management</h3>
 <ul class="task-menu">
-<li onclick="ajax('ajax','modules/character_create.php','',true)" style="background-image: url(resource/user_add.png);">Create Character</li>
-<li onclick="ajax('ajax','modules/character_delete.php','',true)" style="background-image: url(resource/user_delete.png);">Delete Character</li>
+<li><a onclick="ajax('ajax','modules/character_create.php','',true)">Create Character</a></li>
+<li><a onclick="ajax('ajax','modules/character_delete.php','',true)">Delete Character</a></li>
 <?php if ($cfg['char_repair']){?>
-<li onclick="ajax('ajax','modules/character_repair.php','',true)" style="background-image: url(resource/user_edit.png);">Repair Character</li>
+<li><a onclick="ajax('ajax','modules/character_repair.php','',true)">Repair Character</a></li>
 <?php }?>
-<li onclick="ajax('ajax','modules/account_password.php','',true)" style="background-image: url(resource/key.png);">Change Password</li>
-<li onclick="ajax('ajax','modules/account_email.php','',true)" style="background-image: url(resource/email.png);">Change Email</li>
-<li onclick="ajax('ajax','modules/account_comments.php','',true)" style="background-image: url(resource/page_edit.png);">Edit Comments</li>
-<li onclick="ajax('ajax','modules/account_options.php','',true)" style="background-image: url(resource/wrench.png);">Account Options</li>
-<li onclick="ajax('ajax','modules/guild_create.php','',true)" style="background-image: url(resource/group_add.png);">Create Guild</li>
-<li onclick="window.location.href='login.php?logout&amp;redirect=account.php'" style="background-image: url(resource/resultset_previous.png);">Logout</li>
+<li><a onclick="ajax('ajax','modules/account_password.php','',true)">Change Password</a></li>
+<li><a onclick="ajax('ajax','modules/account_email.php','',true)">Change Email</a></li>
+<li><a onclick="ajax('ajax','modules/account_comments.php','',true)">Edit Comments</a></li>
+<li><a onclick="ajax('ajax','modules/account_options.php','',true)">Account Options</a></li>
+<li><a onclick="ajax('ajax','modules/guild_create.php','',true)">Create Guild</a></li>
+<li><a onclick="window.location.href='login.php?logout&amp;redirect=account.php'">Logout</a></li>
 </ul>
-</td><td style="width: 130px;">
+
+</div>
+<div class="col-sm-8">
+<div id="ajax" style="margin-top:20px"></div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+
 <?php 
 if ($account->players){
 	echo '<h3>Characters</h3>'."\n";
@@ -67,8 +75,7 @@ if ($account->guilds){
 	echo '</ul>';
 }
 ?>
-</td></tr>
-</table>
+
 <?php
 if(isset($account->attrs['premend']) && $account->attrs['premend'] > time()) {
     echo '<b>Premium status:</b> You have ';
@@ -78,10 +85,12 @@ if(isset($account->attrs['premend']) && $account->attrs['premend'] > time()) {
     echo $days.'</b> day(s) left';
 }
 ?>
-<div id="ajax"></div>
 </div>
+
+
 <div class="bot"></div>
 </div>
+
 <?php 
 include ("footer.inc.php");
 ?>

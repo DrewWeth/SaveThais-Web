@@ -47,11 +47,16 @@ $SQL = AAC::$SQL;
                     $img_path = 'resource/guild_default.gif';
                 ?>
         <ul class="list-group" onclick="window.location.href='guilds.php?guild_id=<?php echo urlencode($a['id'])?>'" style="cursor: pointer; width: 100%;">
-            <li class="list-group-item"><img src="<?php echo $img_path?>" alt="NO IMG" height="64" width="64"/></td>
-                <td style="vertical-align: top;">
-                    <b><?php echo htmlspecialchars($a['name'])?></b><hr/>
-                            <?php echo htmlspecialchars($a['description'])?>
-                </td>
+            <li class="list-group-item">
+				<div class="media-left">
+					<?php if ($img_path != 0){
+						echo '<img src="'+ $img_path +'" height="64" width="64"/>';
+						}
+					?>
+				</div>
+			
+				<h4 class="list-group-item-heading"><?php echo htmlspecialchars($a['name'])?></h4>
+				<p class="list-group-item-text"><?php echo htmlspecialchars($a['description'])?></p>			
 			</li>
         </ul>
 

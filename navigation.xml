@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation>
 <category name="Server">
+<item href="register.php">Getting Started</item>
+<item href="register.php#download">Download Client</item>
+<item href="account.php">Login</item>
 <item href="news.php">News</item>
-<item href="account.php">Account</item>
-<item href="register.php">Sign Up</item>
-<item href="bans.php">Bans</item>
 </category>
 <category name="Community">
 <item href="characters.php">Characters</item>
