@@ -70,7 +70,7 @@ $cfg['ranks_per_page'] = 50;
 $cfg['ranks_access'] = 2;
 
 # Home page
-$cfg['start_page'] = 'news.php';
+$cfg['start_page'] = 'welcome.php';
 
 # Name shown in window title
 $cfg['server_name'] = 'Tibia Classic 7.6';
