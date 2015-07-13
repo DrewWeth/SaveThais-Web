@@ -86,6 +86,8 @@ if(isset($account->attrs['premend']) && $account->attrs['premend'] > time()) {
 }
 ?>
 </div>
+</div>
+</div>
 
 
 <div class="bot"></div>
