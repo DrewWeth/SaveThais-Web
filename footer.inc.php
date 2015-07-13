@@ -1,26 +1,41 @@
 <noscript class="exception">This website requires javascript to run correctly.</noscript><br/>
-<div id="footer" class="clearer">&nbsp;<span><a href="http://nicaw.net/">Nicaw AAC</a> &copy; <a href="documents/LICENCE.TXT">GPL</a>. Redesigned by <a href="http://github.com/drewweth">Drew</a></span></div>
 </div>
+</div>
+</div>
+            <div class="push"></div>
+</div>
+<footer>
+	<div class="container">
+	<div class="row">
+	<div class="col-sm-4">
+	<ul>
+	<li class="list-header">Connection Details
+
+	<li>Tibia 7.6 Client
+	<li>IP: tibiagame.com
+	<li>Port: 7171
+	</ul>
+	 </div>
+	 <div class="col-sm-4">
+	 <ul>
+	 <li class="list-header">Management
+	 <li><a href="https://trello.com/b/hY62b1D9/tibiagame" target="_blank" >Updates Progress</a>
+	 <li><a href="https://reddit.com/r/tibiagame" target="_blank">Subreddit</a>
+	 </div>
+	 <div class="col-sm-4">
+	 <ul>
+		<li class="list-header">Administration
+		<li><a href="http://github.com/drewweth" target="_blank">GM Drew</a></span>
+		
+		</ul>
+	 </div>
+	 </div>
+</footer>
 </div> <!-- 70% div -->
 </div> <!-- 100% div -->
 </div>
 
-</div>
 
-</div>
-
-<?php 
-//Get current time as we did at start
-    $mtime = microtime();
-    $mtime = explode(" ",$mtime);
-    $mtime = $mtime[1] + $mtime[0];
-//Store end time in a variable
-    $tend = $mtime;
-//Calculate the difference
-    $totaltime = ($tend - $tstart);
-//Output result
-    printf ("<!--Page was generated in %f seconds !-->\n", $totaltime); 
-?>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->

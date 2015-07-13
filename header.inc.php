@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo $ptitle?></title>
 
-<link rel="stylesheet" href="<?php echo $cfg['skin_url'].$cfg['skin']?>.css" type="text/css" media="screen" />
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo $cfg['skin_url'].$cfg['skin']?>.css" type="text/css" media="screen" />
 
 <link rel="stylesheet" href="default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="print.css" type="text/css" media="print" />
@@ -50,7 +50,7 @@ function tick()
 
 <div id="form"></div>
  <div id="wrapper">
-	<div id="sidebar-wrapper" style="background:#031421"> <!-- Custom -->
+	<div id="sidebar-wrapper" style="background-image: url(/resource/grey_wash_wall.png);"> <!-- Custom -->
 		<ul class="sidebar-nav">
 			<li class="sidebar-brand">
 				<a href="welcome.php"><?php echo $cfg['server_name']?></a>
@@ -79,7 +79,7 @@ function tick()
 			<li class="top">
 			Status
 			</li>
-			<div class="navbar-padding" style="color:#666;">
+			<div class="navbar-padding">
 			
 				<div id="server_state">
 				<span class="offline">Server Offline</span>
