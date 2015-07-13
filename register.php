@@ -170,7 +170,7 @@ new Form.Element.Observer('confirm', 2, observerCallback);
 <div class="row">
       <div class="col-sm-4">
 	  <div class="list-group">
-	  <a class="list-group-item list-group-item-info" href="/public/Tibia%20Classic%207.6.zip">
+	  <a class="list-group-item list-group-item-info" href="https://s3-us-west-2.amazonaws.com/tibiagame/Tibia+Game+76.zip">
         <i class="large-text glyphicon glyphicon-grain"></i>
         <h3>Windows Custom Client</h3>
 			Click here to download the custom 7.6 game client.
